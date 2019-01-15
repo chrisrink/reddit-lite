@@ -21,7 +21,7 @@ stories.add("Basic Post", () => (
     visited={boolean("visited", basicPost.visited)}
     num_comments={number("commentCount", basicPost.num_comments)}
     onAction={actionName => action(actionName)}
-    body={basicPost.selftext}
+    selftext={basicPost.selftext}
   />
 ));
 
