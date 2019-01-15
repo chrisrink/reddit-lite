@@ -1,0 +1,19 @@
+.post-actionbar {
+  padding: 0.5rem;
+}
+
+.post-action {
+  color: rgb(135, 138, 140);
+  border: none;
+  background: none;
+  padding: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+.action-icon {
+  margin-right: 0.2rem;
+}
+
+.post-action:hover {
+  background: rgba(26, 26, 27, 0.1);
+}

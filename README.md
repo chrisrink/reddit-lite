@@ -17,6 +17,13 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run storybook`
+
+Launches the storybook portal.<br>
+Storybook(https://github.com/storybooks/storybook) is a development environment for UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and test components.
+
+Use the knobs and actions panels to configure the React Components
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br>

@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+  font-size: calc(10px + 2vmin);
+  padding: 0.2rem 0.7rem;
+}
+
+.App-header a {
+  color: white;
+  text-decoration: none;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.reddit-logo {
+  display: inline-block;
+  width: 2rem;
+}
+
+.reddit-logo-text {
+  display: none;
+}
