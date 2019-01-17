@@ -1,5 +1,4 @@
 .post {
-  margin: 1rem;
   background: white;
   text-align: left;
   padding: 0.5rem;
@@ -35,13 +34,12 @@
 
   max-height: 15rem;
 
-  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
-  mask-image: linear-gradient(180deg, #000 60%, transparent);
   overflow: hidden;
 }
 
 .post-thumbnail {
-  max-height: 30rem;
   margin: 0 auto;
   display: flex;
+  height: 200px;
+  width: 200px;
 }

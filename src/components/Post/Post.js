@@ -39,7 +39,7 @@ const propTypes = {
   /**
    * If the user has opened the post
    */
-  visited: PropTypes.boolean
+  hasVisited: PropTypes.boolean
 };
 
 const defaultProps = {
@@ -48,25 +48,27 @@ const defaultProps = {
 const Post = props => {
   const postClass = classNames({
     post: true,
-    [`post-visited`]: props.visited
+    [`post-visited`]: props.hasVisited
   });
 
+  const href = `https:\\reddit.com${props.permalink}`;
   return (
-    <article className={postClass}>
+    <article className={postClass} style={props.style}>
       <CreatedBy author={props.author} created={props.created_utc} />
       <h3 className="post-title">
-        <a href={props.permalink}>{props.title}</a>
+        <a href={href}>{props.title}</a>
       </h3>
       {props.selftext && <p className="post-body">{props.selftext}</p>}
-      {props.thumbnail && (
+      {props.thumbnail && props.thumbnail !== "self" && (
         <div>
-          <img className="post-thumbnail" src={props.url} />
+          <img className="post-thumbnail" src={props.thumbnail} />
         </div>
       )}
 
       <PostActions
         commentCount={props.num_comments}
         onAction={props.onAction}
+        href={href}
       />
     </article>
   );
@@ -75,4 +77,4 @@ const Post = props => {
 Post.propTypes = propTypes;
 Post.defaultProps = defaultProps;
 
-export default Post;
+export default React.memo(Post);

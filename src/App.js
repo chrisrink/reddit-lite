@@ -1,22 +1,16 @@
 import React, { Component } from "react";
-import RedditLogo from "./components/RedditLogo";
+import Header from "./components/Header";
 import "./styles/app.css";
-import Post from "./components/Post";
+import PostList from "./components/PostList";
 import jsListings from "./api/mock/javascriptList.json";
-
+import epListings from "./api/mock/earthPornList.json";
+const list = [...jsListings.data.children, ...epListings.data.children];
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <a href="https://reddit.com">
-            <RedditLogo />
-            Reddit-Lite
-          </a>
-        </header>
-        {jsListings.data.children.map(post => {
-          return <Post {...post.data} />;
-        })}
+        <Header />
+        <PostList list={list} />
       </div>
     );
   }
