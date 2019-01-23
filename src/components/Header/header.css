@@ -1,12 +1,40 @@
 .app-header {
+  background-color: #282c34;
+  color: #fff;
   display: flex;
   flex-direction: row;
-  align-items: start;
-  justify-content: start;
-  padding: 0.5rem 20px 0;
-  font-size: 2rem;
+  align-items: baseline;
+  justify-content: flex-start;
+  padding: 0.5rem 20px;
+  font-size: 1.5rem;
 }
 
 .app-header a {
   text-decoration: none;
+}
+
+.app-header .reddit-logo {
+  margin-right: 2rem;
+}
+
+.app-header .viewpicker {
+  float: right;
+}
+
+.app-header .spacer {
+  flex: 5;
+}
+
+.app-header .viewpicker-label {
+  color: #dddddd;
+  font-size: 0.7em;
+  margin-right: 0.5em;
+}
+
+.app-header .viewpicker dropdown {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.app-header .subpicker {
+  margin-right: 2rem;
 }

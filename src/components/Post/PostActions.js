@@ -36,8 +36,6 @@ const PostActions = props => {
   const commentText =
     props.commentCount === 0 ? "Comment" : `${props.commentCount} Comments`;
 
-  const handleClick = () => (window.location.href = props.href);
-
   return (
     <div className="post-actionbar">
       <button className="post-action" onClick={createAction("comment")}>

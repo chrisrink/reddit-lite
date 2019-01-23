@@ -1,6 +1,7 @@
 import { addDecorator, configure } from "@storybook/react";
 import { withOptions } from "@storybook/addon-options";
 import { themes } from "@storybook/components";
+import "semantic-ui-css/semantic.min.css";
 
 addDecorator(
   withOptions({
