@@ -12,7 +12,7 @@ class App extends PureComponent {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <div className="App">
             <Switch>
               <Route path="/:subreddit/:view" component={SubRoute} />
