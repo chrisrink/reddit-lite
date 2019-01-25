@@ -40,6 +40,18 @@ export default class PostList extends React.PureComponent {
     this._setMasonryRef = this._setMasonryRef.bind(this);
   }
 
+  componentDidUpdate(prevProps, preState) {
+    if (
+      this.props.list.length > 0 &&
+      prevProps.list.length > 0 &&
+      this.props.list[0] !== prevProps.list[0]
+    ) {
+      this._cache.clearAll();
+      this._resetCellPositioner();
+      this._masonry.recomputeCellPositions();
+    }
+  }
+
   _calculateColumnCount() {
     this._columnCount = Math.floor(
       this._width / (DEFAULT_COLUMN_WIDTH + GUTTER_SIZE)

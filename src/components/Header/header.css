@@ -24,18 +24,19 @@
 .app-header .header-message {
   flex: 5;
   font-size: 1rem;
-  overflow-y: hidden;
 }
 
-.header-message .message {
+.header-message .ui.message {
   display: inline-flex;
-  margin: 0 auto;
   position: relative;
   top: -50px;
+  position: fixed;
+  z-index: 1000;
+  margin: 0 20%;
 }
 
-.message.appear {
-  top: 0;
+.ui.message.appear {
+  top: 10px;
   transition-property: top;
   transition-duration: 2s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);

@@ -16,7 +16,7 @@ async function getPostsAfter(subreddit, view, after) {
 
 async function getPostsBefore(subreddit, view, before) {
   return fetch(
-    `https://www.reddit.com/r/${subreddit}/${view}.json?after=${before}`
+    `https://www.reddit.com/r/${subreddit}/${view}.json?before=${before}`
   );
 }
 

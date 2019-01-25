@@ -26,11 +26,17 @@ const defaultProps = {
     push: action("push history")
   },
   actions: {
-    fetchPosts: action("fetchPost"),
-    fetchSubs: action("fetchSub"),
-    fetchNextPost: action("fetchNextPost")
+    fetchPosts: action("fetchpost"),
+    fetchSubs: action("fetch sub"),
+    fetchNextPost: action("fetch next post"),
+    addNewPost: action("add new posts"),
+    fetchSubreddits: action("fetch subs"),
+    resetSubreddits: action("reset sub"),
+    fetchUpdates: action("fetch new posts"),
+    resetUpdates: action("clear reset")
   },
-  subredditList: DEFAULT_SUBS
+  subredditList: DEFAULT_SUBS,
+  watchForNew: true
 };
 stories.add("Loading", () => <SubRoute {...defaultProps} loading={true} />);
 
@@ -43,5 +49,6 @@ stories.add("List", () => (
     {...defaultProps}
     postsByOrder={postsByOrder}
     postsByName={postByName}
+    newPosts={[{}]}
   />
 ));

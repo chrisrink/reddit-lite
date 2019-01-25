@@ -26,20 +26,27 @@ function clearPosts() {
   };
 }
 
-function receivePosts(json, loadValue) {
-  const list = json.data.children.map(child => child.data);
+function splitIntoOrder(list) {
   const postsByOrder = list.map(item => item.name);
   const postsByName = list.reduce((posts, item) => {
     posts[item.name] = item;
     return posts;
   }, {});
 
+  return {
+    postsByOrder: postsByOrder,
+    postsByName: postsByName
+  };
+}
+
+function receivePosts(json, loadValue) {
+  const list = json.data.children.map(child => child.data);
+
   const loadType = getLoadType(loadValue, false);
   return {
     type: ACTIONS.RECIEVE_POSTS,
     payload: {
-      postsByOrder: postsByOrder,
-      postsByName: postsByName,
+      ...splitIntoOrder(list),
       after: json.data.after,
       ...loadType
     }
@@ -67,4 +74,11 @@ function fetchNextPost(subreddit, view, after) {
   };
 }
 
-export { requestPosts, receivePosts, fetchPosts, fetchNextPost };
+function addNewPost(newPosts) {
+  return {
+    type: ACTIONS.ADD_NEW_POSTS,
+    payload: splitIntoOrder(newPosts)
+  };
+}
+
+export { requestPosts, receivePosts, fetchPosts, fetchNextPost, addNewPost };

@@ -7,11 +7,12 @@ import { faCompass } from "@fortawesome/free-solid-svg-icons";
 import Header from "../Header";
 import PostList from "../PostList";
 import { DEFAULTS } from "../../constants";
-import { fetchPosts, fetchNextPost } from "../../actions/posts";
+import { fetchPosts, fetchNextPost, addNewPost } from "../../actions/posts";
 import { fetchSubreddits, resetSubreddits } from "../../actions/subreddit";
+import { fetchUpdates, resetUpdates } from "../../actions/updates";
 
 import "./styles/subroute.css";
-
+const POLL_INTERVAL = 20000;
 class SubRoute extends PureComponent {
   static propTypes = {
     match: PropTypes.object.isRequired,
@@ -21,12 +22,19 @@ class SubRoute extends PureComponent {
     loadingNext: PropTypes.bool,
     actions: PropTypes.shape({
       fetchPosts: PropTypes.func,
-      fetchNextPost: PropTypes.func
+      fetchNextPost: PropTypes.func,
+      addNewPost: PropTypes.func,
+      fetchSubreddits: PropTypes.func,
+      resetSubreddits: PropTypes.func,
+      fetchUpdates: PropTypes.func,
+      resetUpdates: PropTypes.func
     }),
     postsByOrder: PropTypes.array,
     postsByName: PropTypes.object,
     subredditList: PropTypes.array,
-    after: PropTypes.string
+    after: PropTypes.string,
+    watchForNew: PropTypes.bool,
+    newPosts: PropTypes.array
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -69,7 +77,28 @@ class SubRoute extends PureComponent {
     if (prevState.subreddit !== subreddit || prevState.view !== view) {
       fetchPosts(subreddit, view, true);
     }
+
+    this.watchForUpdates();
   }
+
+  watchForUpdates() {
+    if (true || this.props.watchForNew) {
+      if (this.timer) {
+        clearInterval(this.timer);
+        this.timer = undefined;
+      }
+      this.timer = setInterval(this.checkUpdates, POLL_INTERVAL);
+    }
+  }
+
+  checkUpdates = () => {
+    const { view, subreddit } = this.state;
+    const { postsByOrder, actions } = this.props;
+
+    if (postsByOrder.length > 0) {
+      actions.fetchUpdates(subreddit, view, postsByOrder[0]);
+    }
+  };
 
   handleSubRedditChange = (e, { value }) => {
     const { view } = this.state;
@@ -102,6 +131,14 @@ class SubRoute extends PureComponent {
     if (!loadingNext) {
       this.props.actions.fetchNextPost(subreddit, view, after);
     }
+  };
+
+  handleShowNew = () => {
+    const { newPosts, actions } = this.props;
+
+    actions.addNewPost(newPosts);
+    actions.resetUpdates();
+    window.scrollTo(0, 0);
   };
 
   renderLoading() {
@@ -139,7 +176,13 @@ class SubRoute extends PureComponent {
 
   render() {
     const { subreddit, subredditLoading, subredditSearch, view } = this.state;
-    const { postsByOrder, postsByName, subredditList, loading } = this.props;
+    const {
+      postsByOrder,
+      postsByName,
+      subredditList,
+      loading,
+      newPosts
+    } = this.props;
     return (
       <Fragment>
         <Header
@@ -151,6 +194,8 @@ class SubRoute extends PureComponent {
           subredditSearch={subredditSearch}
           view={view}
           onViewChange={this.handleViewChange}
+          showNew={newPosts && newPosts.length > 0}
+          onShowNew={this.handleShowNew}
         />
         {this.renderList(postsByOrder, postsByName, subreddit, view, loading)}
       </Fragment>
@@ -167,19 +212,29 @@ const mapStateToProps = state => {
     after
   } = state.posts;
   const { list } = state.subreddits;
+  const { beforeList } = state.updates;
   return {
     postsByOrder,
     postsByName,
     subredditList: list,
     loading,
     loadingNext,
-    after
+    after,
+    newPosts: beforeList
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
-    { fetchPosts, fetchNextPost, fetchSubreddits, resetSubreddits },
+    {
+      fetchPosts,
+      fetchNextPost,
+      fetchSubreddits,
+      resetSubreddits,
+      fetchUpdates,
+      resetUpdates,
+      addNewPost
+    },
     dispatch
   )
 });

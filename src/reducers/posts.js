@@ -38,7 +38,6 @@ export default function(state = initialState, action) {
       const {
         postsByName,
         postsByOrder,
-        nextPost,
         after,
         loading,
         loadingNext
@@ -49,12 +48,16 @@ export default function(state = initialState, action) {
         loading,
         loadingNext,
         failed: false,
-
         postsByOrder: [...state.postsByOrder, ...postsByOrder],
-
         postsByName: { ...state.postsByName, ...postsByName },
-        lastPost: nextPost,
         after
+      };
+
+    case ACTIONS.ADD_NEW_POSTS:
+      return {
+        ...state,
+        postsByOrder: [...action.payload.postsByOrder, ...state.postsByOrder],
+        postsByName: { ...action.payload.postsByName, ...state.postsByName }
       };
 
     default:
