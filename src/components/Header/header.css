@@ -21,8 +21,24 @@
   float: right;
 }
 
-.app-header .spacer {
+.app-header .header-message {
   flex: 5;
+  font-size: 1rem;
+  overflow-y: hidden;
+}
+
+.header-message .message {
+  display: inline-flex;
+  margin: 0 auto;
+  position: relative;
+  top: -50px;
+}
+
+.message.appear {
+  top: 0;
+  transition-property: top;
+  transition-duration: 2s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 
 .app-header .viewpicker-label {

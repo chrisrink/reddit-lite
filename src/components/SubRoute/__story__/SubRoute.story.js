@@ -1,6 +1,5 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 
 import { SubRoute } from "../SubRoute";
@@ -12,7 +11,6 @@ import { fetchNextPost } from "../../../actions/posts";
 const stories = storiesOf("SubRoute", module);
 
 const list = [...jsListings.data.children, ...epListings.data.children];
-stories.addDecorator(withKnobs);
 
 const postsByOrder = epListings.data.children.map(post => post.data.name);
 const postByName = epListings.data.children.reduce((map, post) => {

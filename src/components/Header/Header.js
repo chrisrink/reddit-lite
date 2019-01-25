@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Message } from "semantic-ui-react";
+
 import { DEFAULTS } from "../../constants";
 import RedditLogo from "../RedditLogo/RedditLogo";
 import SubPicker from "./SubPicker";
@@ -18,7 +20,9 @@ const propTypes = {
 
   subredditSearch: PropTypes.string,
   onViewChange: PropTypes.func,
-  view: PropTypes.string
+  view: PropTypes.string,
+  showNew: PropTypes.bool,
+  onShowNew: PropTypes.func
 };
 
 const defaultProps = {
@@ -35,7 +39,9 @@ const Header = props => {
     onSubredditChange,
     onSubredditSearch,
     view,
-    onViewChange
+    onViewChange,
+    showNew,
+    onShowNew
   } = props;
   return (
     <header className="app-header">
@@ -50,7 +56,16 @@ const Header = props => {
         searchValue={subredditSearch}
         options={subList}
       />
-      <div className="spacer" />
+      <div className="header-message">
+        <Message
+          color="green"
+          size="mini"
+          className={showNew ? "appear" : ""}
+          onClick={onShowNew}
+        >
+          {showNew && "Refresh"}
+        </Message>
+      </div>
       <ViewPicker value={view} onChange={onViewChange} />
     </header>
   );
