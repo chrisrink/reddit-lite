@@ -7,7 +7,7 @@ import { faCompass } from "@fortawesome/free-solid-svg-icons";
 import Header from "../Header";
 import PostList from "../PostList";
 import { DEFAULTS } from "../../constants";
-import { fetchPosts } from "../../actions/posts";
+import { fetchPosts, fetchNextPost } from "../../actions/posts";
 import { fetchSubreddits, resetSubreddits } from "../../actions/subreddit";
 
 import "./styles/subroute.css";
@@ -18,12 +18,15 @@ class SubRoute extends PureComponent {
     location: PropTypes.object,
     history: PropTypes.object,
     loading: PropTypes.bool,
+    loadingNext: PropTypes.bool,
     actions: PropTypes.shape({
-      fetchPosts: PropTypes.func
+      fetchPosts: PropTypes.func,
+      fetchNextPost: PropTypes.func
     }),
     postsByOrder: PropTypes.array,
     postsByName: PropTypes.object,
-    subredditList: PropTypes.array
+    subredditList: PropTypes.array,
+    after: PropTypes.string
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -92,6 +95,15 @@ class SubRoute extends PureComponent {
     this.setState({ subredditSearch: value });
   }
 
+  handleLoadMore = ({ startIndex, stopIndex }) => {
+    const { after, loadingNext } = this.props;
+    const { subreddit, view } = this.state;
+
+    if (!loadingNext) {
+      this.props.actions.fetchNextPost(subreddit, view, after);
+    }
+  };
+
   renderLoading() {
     return (
       <div className="no-results">
@@ -112,7 +124,14 @@ class SubRoute extends PureComponent {
     if (postsByOrder && postsByOrder.length > 0) {
       const list = postsByOrder.map(name => postsByName[name]);
 
-      return <PostList list={list} subreddit={subreddit} view={view} />;
+      return (
+        <PostList
+          list={list}
+          subreddit={subreddit}
+          view={view}
+          loadMore={this.handleLoadMore}
+        />
+      );
     }
 
     return this.renderNoResults();
@@ -140,19 +159,27 @@ class SubRoute extends PureComponent {
 }
 
 const mapStateToProps = state => {
-  const { postsByOrder, postsByName, loading } = state.posts;
+  const {
+    postsByOrder,
+    postsByName,
+    loading,
+    loadingNext,
+    after
+  } = state.posts;
   const { list } = state.subreddits;
   return {
     postsByOrder,
     postsByName,
     subredditList: list,
-    loading
+    loading,
+    loadingNext,
+    after
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
-    { fetchPosts, fetchSubreddits, resetSubreddits },
+    { fetchPosts, fetchNextPost, fetchSubreddits, resetSubreddits },
     dispatch
   )
 });

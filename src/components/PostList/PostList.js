@@ -18,7 +18,8 @@ const GUTTER_SIZE = 20;
 const DEFAULT_COLUMN_WIDTH = 300;
 export default class PostList extends React.PureComponent {
   static propTypes = {
-    list: PropTypes.array.isRequired
+    list: PropTypes.array.isRequired,
+    loadMore: PropTypes.func
   };
 
   constructor(props) {
@@ -78,6 +79,16 @@ export default class PostList extends React.PureComponent {
     this._masonry.recomputeCellPositions();
   }
 
+  _handleCellsRendered = ({ startIndex, stopIndex }) => {
+    const { list, loadMore } = this.props;
+
+    if (stopIndex > list.length - this._columnCount * 2) {
+      if (loadMore) {
+        loadMore({ startIndex, stopIndex });
+      }
+    }
+  };
+
   _cellRenderer({ index, key, parent, style }) {
     const { list } = this.props;
 
@@ -110,6 +121,7 @@ export default class PostList extends React.PureComponent {
   }
 
   _renderMasonry({ width }) {
+    const { list } = this.props;
     this._width = width;
 
     this._calculateColumnCount();
@@ -119,7 +131,7 @@ export default class PostList extends React.PureComponent {
       <div className="postlist">
         <Masonry
           autoHeight={true}
-          cellCount={25}
+          cellCount={list.length}
           cellMeasurerCache={this._cache}
           cellPositioner={this._cellPositioner}
           cellRenderer={this._cellRenderer}
@@ -127,6 +139,7 @@ export default class PostList extends React.PureComponent {
           overscanByPixels={100}
           ref={this._setMasonryRef}
           scrollTop={this._scrollTop}
+          onCellsRendered={this._handleCellsRendered}
           width={this._bodyWidth}
         />
       </div>

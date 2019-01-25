@@ -4,8 +4,20 @@ async function searchSubs(query) {
   );
 }
 
-async function getPosts(subreddit) {
-  return fetch(`https://www.reddit.com/r/${subreddit}.json`);
+async function getPosts(subreddit, view) {
+  return fetch(`https://www.reddit.com/r/${subreddit}/${view}.json`);
 }
 
-export { getPosts, searchSubs };
+async function getPostsAfter(subreddit, view, after) {
+  return fetch(
+    `https://www.reddit.com/r/${subreddit}/${view}.json?after=${after}`
+  );
+}
+
+async function getPostsBefore(subreddit, view, before) {
+  return fetch(
+    `https://www.reddit.com/r/${subreddit}/${view}.json?after=${before}`
+  );
+}
+
+export { getPosts, searchSubs, getPostsBefore, getPostsAfter };

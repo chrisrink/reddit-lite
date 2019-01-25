@@ -2,11 +2,12 @@ import { ACTIONS } from "../constants";
 
 const initialState = {
   loading: true,
+  loadingNext: false,
   failed: false,
   postsByOrder: [],
   postsbyName: {},
-  topPost: undefined,
-  lastPost: undefined,
+  before: undefined,
+  after: undefined,
   listFailed: false
 };
 
@@ -15,10 +16,15 @@ export default function(state = initialState, action) {
     case ACTIONS.REQUEST_POSTS:
       return {
         ...state,
-        loading: action.payload.loadCenter,
-        postsByOrder: [],
-
+        loading: action.payload.loading,
+        loadingNext: action.payload.loadingNext,
         failed: false
+      };
+
+    case ACTIONS.CLEAR_POSTS:
+      return {
+        ...state,
+        postsByOrder: []
       };
 
     case ACTIONS.RECIEVE_POSTS_FAILED:
@@ -29,21 +35,26 @@ export default function(state = initialState, action) {
       };
 
     case ACTIONS.RECIEVE_POSTS:
-      const { postsByName, postsByOrder, nextPost, reload } = action.payload;
+      const {
+        postsByName,
+        postsByOrder,
+        nextPost,
+        after,
+        loading,
+        loadingNext
+      } = action.payload;
 
       return {
         ...state,
-        loading: false,
+        loading,
+        loadingNext,
         failed: false,
 
-        postsByOrder: reload
-          ? postsByOrder
-          : [...state.postsByOrder, ...postsByOrder],
+        postsByOrder: [...state.postsByOrder, ...postsByOrder],
 
-        postsByName: reload
-          ? postsByName
-          : { ...state.postsByName, ...postsByName },
-        lastPost: nextPost
+        postsByName: { ...state.postsByName, ...postsByName },
+        lastPost: nextPost,
+        after
       };
 
     default:

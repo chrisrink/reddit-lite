@@ -7,6 +7,7 @@ import { SubRoute } from "../SubRoute";
 import { DEFAULT_SUBS, DEFAULTS } from "../../../constants";
 import jsListings from "../../../api/mock/javascriptList.json";
 import epListings from "../../../api/mock/earthPornList.json";
+import { fetchNextPost } from "../../../actions/posts";
 
 const stories = storiesOf("SubRoute", module);
 
@@ -23,9 +24,13 @@ const defaultProps = {
   match: {
     params: { subreddit: DEFAULTS.subreddit.display_name, view: DEFAULTS.view }
   },
+  history: {
+    push: action("push history")
+  },
   actions: {
-    fetchPosts: async () => action("fetchPost"),
-    fetchSubs: async () => action("fetchSub")
+    fetchPosts: action("fetchPost"),
+    fetchSubs: action("fetchSub"),
+    fetchNextPost: action("fetchNextPost")
   },
   subredditList: DEFAULT_SUBS
 };

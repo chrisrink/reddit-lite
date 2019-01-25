@@ -34,21 +34,12 @@ const propTypes = {
   /**
    * Brief summary of article
    */
-  title: PropTypes.string,
-
-  /**
-   * If the user has opened the post
-   */
-  hasVisited: PropTypes.boolean
+  title: PropTypes.string
 };
 
-const defaultProps = {
-  clicked: false
-};
 const Post = props => {
   const postClass = classNames({
-    post: true,
-    [`post-visited`]: props.hasVisited
+    post: true
   });
 
   const href = `https:\\reddit.com${props.permalink}`;
@@ -79,6 +70,5 @@ const Post = props => {
 };
 
 Post.propTypes = propTypes;
-Post.defaultProps = defaultProps;
 
 export default React.memo(Post);
