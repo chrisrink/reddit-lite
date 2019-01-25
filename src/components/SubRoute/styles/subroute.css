@@ -1,0 +1,8 @@
+.no-results {
+  color: #ddd;
+  display: flex;
+  justify-content: center;
+  font-size: 2.5rem;
+  align-items: center;
+  height: 90vh;
+}

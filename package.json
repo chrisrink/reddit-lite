@@ -38,7 +38,8 @@
     "lint-staged": "^8.1.0",
     "prettier": "^1.15.3",
     "prettier-eslint": "^8.8.2",
-    "react-test-renderer": "^16.7.0"
+    "react-test-renderer": "^16.7.0",
+    "redux-devtools-extension": "^2.13.7"
   },
   "scripts": {
     "start": "react-scripts start",

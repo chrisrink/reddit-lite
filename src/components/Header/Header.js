@@ -1,31 +1,57 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { DEFAULT_SEARCH } from "../../constants";
+import { DEFAULTS } from "../../constants";
 import RedditLogo from "../RedditLogo/RedditLogo";
 import SubPicker from "./SubPicker";
 import ViewPicker from "./ViewPicker";
 import "./header.css";
 
 const propTypes = {
-  view: PropTypes.string,
-  subreddit: PropTypes.string,
-  subredditLoading: PropTypes.bool
+  subreddit: PropTypes.shape({
+    title: PropTypes.string,
+    display_name: PropTypes.string
+  }),
+  subList: PropTypes.array,
+  subredditLoading: PropTypes.bool,
+  onSubredditChange: PropTypes.func,
+  onSubredditSearch: PropTypes.func,
+
+  subredditSearch: PropTypes.string,
+  onViewChange: PropTypes.func,
+  view: PropTypes.string
 };
 
 const defaultProps = {
-  view: DEFAULT_SEARCH.view,
-  subreddit: DEFAULT_SEARCH.subreddit,
+  view: DEFAULTS.view,
+  subreddit: DEFAULTS.subreddit,
   subredditLoading: false
 };
 const Header = props => {
+  const {
+    subreddit,
+    subList,
+    subredditLoading,
+    subredditSearch,
+    onSubredditChange,
+    onSubredditSearch,
+    view,
+    onViewChange
+  } = props;
   return (
     <header className="app-header">
       <a href="https://reddit.com">
         <RedditLogo />
       </a>
-      <SubPicker value="all" />
+      <SubPicker
+        value={subreddit}
+        onChange={onSubredditChange}
+        onSearchChange={onSubredditSearch}
+        loading={subredditLoading}
+        searchValue={subredditSearch}
+        options={subList}
+      />
       <div className="spacer" />
-      <ViewPicker value="hot" />
+      <ViewPicker value={view} onChange={onViewChange} />
     </header>
   );
 };

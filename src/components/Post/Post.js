@@ -61,7 +61,11 @@ const Post = props => {
       {props.selftext && <p className="post-body">{props.selftext}</p>}
       {props.thumbnail && props.thumbnail !== "self" && (
         <div>
-          <img className="post-thumbnail" src={props.thumbnail} />
+          <img
+            alt="Post thumbnail"
+            className="post-thumbnail"
+            src={props.thumbnail}
+          />
         </div>
       )}
 

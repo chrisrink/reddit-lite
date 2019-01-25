@@ -50,7 +50,7 @@ Reddit APIs
 
 Official API (API https://www.reddit.com/dev/api/)
 
-Useful API (https://github.com/reddit-archive/reddit/wiki/JSON)
+JSON Data Structures (https://github.com/reddit-archive/reddit/wiki/JSON)
 
 ## Disclaimer
 

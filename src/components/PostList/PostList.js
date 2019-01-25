@@ -83,16 +83,10 @@ export default class PostList extends React.PureComponent {
 
     const post = list[index % list.length];
 
-    const postProps = {
-      ...post.data,
-      hasVisited: post.data.visited
-    };
-    delete postProps.visited;
-
     return (
       <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
         <div style={style}>
-          <Post {...postProps} />
+          <Post {...post} />
         </div>
       </CellMeasurer>
     );

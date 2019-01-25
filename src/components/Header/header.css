@@ -38,3 +38,7 @@
 .app-header .subpicker {
   margin-right: 2rem;
 }
+
+.subpicker {
+  color: #fff;
+}
