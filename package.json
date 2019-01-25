@@ -1,6 +1,6 @@
 {
   "name": "reddit-lite",
-  "hostpage": "https://chrisrink.github.io/reddit-lite/",
+  "homepage": "https://chrisrink.github.io/reddit-lite",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
