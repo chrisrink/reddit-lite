@@ -72,3 +72,4 @@ const Post = props => {
 Post.propTypes = propTypes;
 
 export default React.memo(Post);
+export { Post };

@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostActions with a comment 1`] = `
+
+<div class="post-actionbar">
+  <button class="post-action">
+    <svg aria-hidden="true"
+         data-prefix="fas"
+         data-icon="comment"
+         class="svg-inline--fa fa-comment fa-w-16 action-icon"
+         role="img"
+         xmlns="http://www.w3.org/2000/svg"
+         viewbox="0 0 512 512"
+    >
+      <path fill="currentColor"
+            d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"
+      >
+      </path>
+    </svg>
+    Comment
+  </button>
+  <button class="post-action">
+    <svg aria-hidden="true"
+         data-prefix="fas"
+         data-icon="share"
+         class="svg-inline--fa fa-share fa-w-16 action-icon"
+         role="img"
+         xmlns="http://www.w3.org/2000/svg"
+         viewbox="0 0 512 512"
+    >
+      <path fill="currentColor"
+            d="M503.691 189.836L327.687 37.851C312.281 24.546 288 35.347 288 56.015v80.053C127.371 137.907 0 170.1 0 322.326c0 61.441 39.581 122.309 83.333 154.132 13.653 9.931 33.111-2.533 28.077-18.631C66.066 312.814 132.917 274.316 288 272.085V360c0 20.7 24.3 31.453 39.687 18.164l176.004-152c11.071-9.562 11.086-26.753 0-36.328z"
+      >
+      </path>
+    </svg>
+    Share
+  </button>
+  <button class="post-action">
+    <svg aria-hidden="true"
+         data-prefix="fas"
+         data-icon="bookmark"
+         class="svg-inline--fa fa-bookmark fa-w-12 action-icon"
+         role="img"
+         xmlns="http://www.w3.org/2000/svg"
+         viewbox="0 0 384 512"
+    >
+      <path fill="currentColor"
+            d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"
+      >
+      </path>
+    </svg>
+    Save
+  </button>
+</div>
+
+`;
+
+exports[`PostActions without a comment 1`] = `
+
+<div class="post-actionbar">
+  <button class="post-action">
+    <svg aria-hidden="true"
+         data-prefix="fas"
+         data-icon="comment"
+         class="svg-inline--fa fa-comment fa-w-16 action-icon"
+         role="img"
+         xmlns="http://www.w3.org/2000/svg"
+         viewbox="0 0 512 512"
+    >
+      <path fill="currentColor"
+            d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"
+      >
+      </path>
+    </svg>
+    Comment
+  </button>
+  <button class="post-action">
+    <svg aria-hidden="true"
+         data-prefix="fas"
+         data-icon="share"
+         class="svg-inline--fa fa-share fa-w-16 action-icon"
+         role="img"
+         xmlns="http://www.w3.org/2000/svg"
+         viewbox="0 0 512 512"
+    >
+      <path fill="currentColor"
+            d="M503.691 189.836L327.687 37.851C312.281 24.546 288 35.347 288 56.015v80.053C127.371 137.907 0 170.1 0 322.326c0 61.441 39.581 122.309 83.333 154.132 13.653 9.931 33.111-2.533 28.077-18.631C66.066 312.814 132.917 274.316 288 272.085V360c0 20.7 24.3 31.453 39.687 18.164l176.004-152c11.071-9.562 11.086-26.753 0-36.328z"
+      >
+      </path>
+    </svg>
+    Share
+  </button>
+  <button class="post-action">
+    <svg aria-hidden="true"
+         data-prefix="fas"
+         data-icon="bookmark"
+         class="svg-inline--fa fa-bookmark fa-w-12 action-icon"
+         role="img"
+         xmlns="http://www.w3.org/2000/svg"
+         viewbox="0 0 384 512"
+    >
+      <path fill="currentColor"
+            d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"
+      >
+      </path>
+    </svg>
+    Save
+  </button>
+</div>
+
+`;
