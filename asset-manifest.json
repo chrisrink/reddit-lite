@@ -1,7 +1,7 @@
 {
   "main.css": "/reddit-lite/static/css/main.05c7fc17.chunk.css",
-  "main.js": "/reddit-lite/static/js/main.1626c925.chunk.js",
-  "main.js.map": "/reddit-lite/static/js/main.1626c925.chunk.js.map",
+  "main.js": "/reddit-lite/static/js/main.018e15e9.chunk.js",
+  "main.js.map": "/reddit-lite/static/js/main.018e15e9.chunk.js.map",
   "static/css/1.481c64d6.chunk.css": "/reddit-lite/static/css/1.481c64d6.chunk.css",
   "static/js/1.4c55ac79.chunk.js": "/reddit-lite/static/js/1.4c55ac79.chunk.js",
   "static/js/1.4c55ac79.chunk.js.map": "/reddit-lite/static/js/1.4c55ac79.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/css/main.05c7fc17.chunk.css.map": "/reddit-lite/static/css/main.05c7fc17.chunk.css.map",
   "static/css/1.481c64d6.chunk.css.map": "/reddit-lite/static/css/1.481c64d6.chunk.css.map",
   "index.html": "/reddit-lite/index.html",
-  "precache-manifest.f308d60e6af592615df3627cf517583c.js": "/reddit-lite/precache-manifest.f308d60e6af592615df3627cf517583c.js",
+  "precache-manifest.6260efe0f8f6abfcc7351e729243bc1d.js": "/reddit-lite/precache-manifest.6260efe0f8f6abfcc7351e729243bc1d.js",
   "service-worker.js": "/reddit-lite/service-worker.js"
 }

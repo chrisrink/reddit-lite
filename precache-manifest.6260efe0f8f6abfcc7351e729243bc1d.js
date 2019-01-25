@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "1626c92519817a058710",
+    "revision": "018e15e98d8a3b3b6195",
     "url": "/reddit-lite/static/css/main.05c7fc17.chunk.css"
   },
   {
-    "revision": "1626c92519817a058710",
-    "url": "/reddit-lite/static/js/main.1626c925.chunk.js"
+    "revision": "018e15e98d8a3b3b6195",
+    "url": "/reddit-lite/static/js/main.018e15e9.chunk.js"
   },
   {
     "revision": "4c55ac79830b329f3b60",
@@ -68,12 +68,12 @@ self.__precacheManifest = [
     "url": "/reddit-lite/static/media/brand-icons.13db00b7.eot"
   },
   {
-    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
-    "url": "/reddit-lite/static/media/brand-icons.c5ebe0b3.ttf"
-  },
-  {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
     "url": "/reddit-lite/static/media/outline-icons.82f60bd0.svg"
+  },
+  {
+    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
+    "url": "/reddit-lite/static/media/brand-icons.c5ebe0b3.ttf"
   },
   {
     "revision": "962a1bf31c081691065fe333d9fa8105",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
     "url": "/reddit-lite/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "e597f15fc52744851534f8f6fb5b2c98",
+    "revision": "76817faaf82eb15a29b778eb1c49c2ba",
     "url": "/reddit-lite/index.html"
   }
 ];
