@@ -55,7 +55,7 @@ class SubRoute extends PureComponent {
   componentDidMount() {
     const { fetchPosts } = this.props.actions;
     const { subreddit, view } = this.state;
-    fetchPosts(subreddit);
+    fetchPosts(subreddit, view);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -63,14 +63,19 @@ class SubRoute extends PureComponent {
 
     const { subreddit, view } = this.state;
 
-    if (prevState.subreddit !== subreddit) {
-      fetchPosts(subreddit, true);
+    if (prevState.subreddit !== subreddit || prevState.view !== view) {
+      fetchPosts(subreddit, view, true);
     }
   }
 
   handleSubRedditChange = (e, { value }) => {
-    const { view } = this.props;
-    this.props.history.push(`/${value}`);
+    const { view } = this.state;
+    this.props.history.push(`/${value}/${view}`);
+  };
+
+  handleViewChange = (e, { value }) => {
+    const { subreddit } = this.state;
+    this.props.history.push(`/${subreddit}/${value}`);
   };
 
   handleSubRedditSearch(value) {
@@ -126,6 +131,7 @@ class SubRoute extends PureComponent {
           subredditLoading={subredditLoading}
           subredditSearch={subredditSearch}
           view={view}
+          onViewChange={this.handleViewChange}
         />
         {this.renderList(postsByOrder, postsByName, subreddit, view, loading)}
       </Fragment>
@@ -134,13 +140,13 @@ class SubRoute extends PureComponent {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
-  const { postsByOrder, postsByName } = state.posts;
+  const { postsByOrder, postsByName, loading } = state.posts;
   const { list } = state.subreddits;
   return {
     postsByOrder,
     postsByName,
-    subredditList: list
+    subredditList: list,
+    loading
   };
 };
 

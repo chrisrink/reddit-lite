@@ -1,9 +1,12 @@
 import { ACTIONS } from "../constants";
 import { getPosts } from "../api/reddit";
 
-function requestPosts() {
+function requestPosts(loadCenter) {
   return {
-    type: ACTIONS.REQUEST_POSTS
+    type: ACTIONS.REQUEST_POSTS,
+    payload: {
+      loadCenter
+    }
   };
 }
 
@@ -22,16 +25,15 @@ function receivePosts(subreddit, json, reload) {
       postsByOrder: postsByOrder,
       postsByName: postsByName,
       lastPost: json.data.after,
-      receivedAt: Date.now(),
       reload
     }
   };
 }
 
-function fetchPosts(subreddit, reload = false) {
+function fetchPosts(subreddit, view, reload = false) {
   return dispatch => {
-    dispatch(requestPosts());
-    return getPosts(subreddit)
+    dispatch(requestPosts(reload));
+    return getPosts(subreddit, view)
       .then(response => response.json())
       .then(json => dispatch(receivePosts(subreddit, json, reload)));
   };

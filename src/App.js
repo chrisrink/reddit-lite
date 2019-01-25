@@ -15,8 +15,8 @@ class App extends PureComponent {
         <BrowserRouter>
           <div className="App">
             <Switch>
-              <Route path="/:subreddit" component={SubRoute} />
-              <Redirect from="/" to="/all" exact={true} />
+              <Route path="/:subreddit/:view" component={SubRoute} />
+              <Redirect from="/" to="/all/hot" exact={true} />
             </Switch>
           </div>
         </BrowserRouter>

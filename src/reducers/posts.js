@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
     case ACTIONS.REQUEST_POSTS:
       return {
         ...state,
-        loading: true,
+        loading: action.payload.loadCenter,
         postsByOrder: [],
 
         failed: false

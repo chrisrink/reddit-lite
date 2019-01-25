@@ -29,7 +29,6 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
         failed: false,
-
         list
       };
 
