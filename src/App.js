@@ -8,6 +8,10 @@ import "semantic-ui-css/semantic.min.css";
 import "./styles/app.css";
 
 const store = configureStore();
+/**
+ * This is the container of the App which handles routing and provides global state to the application.
+ * SubRoute is the primary container for the page.
+ */
 class App extends PureComponent {
   render() {
     return (

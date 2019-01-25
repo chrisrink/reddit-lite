@@ -6,20 +6,37 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCompass } from "@fortawesome/free-solid-svg-icons";
 import Header from "../Header";
 import PostList from "../PostList";
-import { DEFAULTS } from "../../constants";
+import { DEFAULTS, POLL_INTERVAL } from "../../constants";
 import { fetchPosts, fetchNextPost, addNewPost } from "../../actions/posts";
 import { fetchSubreddits, resetSubreddits } from "../../actions/subreddit";
 import { fetchUpdates, resetUpdates } from "../../actions/updates";
 
 import "./styles/subroute.css";
-const POLL_INTERVAL = 20000;
+
+/**
+ * SubRoute is the primary container. For testing, used the named export.
+ */
 class SubRoute extends PureComponent {
   static propTypes = {
+    /**
+     * Url parameters and query strings provided by react-router
+     */
     match: PropTypes.object.isRequired,
-    location: PropTypes.object,
+    /**
+     * History api for pushing navigation
+     */
     history: PropTypes.object,
+    /**
+     * Show the loading indicator
+     */
     loading: PropTypes.bool,
+    /**
+     * Show the bottom loading indicator (not implemented yet)
+     */
     loadingNext: PropTypes.bool,
+    /**
+     * Callback actions thatt can be triggered
+     */
     actions: PropTypes.shape({
       fetchPosts: PropTypes.func,
       fetchNextPost: PropTypes.func,
@@ -29,11 +46,29 @@ class SubRoute extends PureComponent {
       fetchUpdates: PropTypes.func,
       resetUpdates: PropTypes.func
     }),
+    /**
+     * Ordered list of posts to display
+     */
     postsByOrder: PropTypes.array,
+    /**
+     * Hashed map for looking up posts
+     */
     postsByName: PropTypes.object,
+    /**
+     * List of subreddits to display when viewing and searching in the SubPicker
+     */
     subredditList: PropTypes.array,
+    /**
+     * Id of the last post that was retrieved
+     */
     after: PropTypes.string,
+    /**
+     * Toggle for turning off polling
+     */
     watchForNew: PropTypes.bool,
+    /**
+     * A list of new posts that have not been viewed
+     */
     newPosts: PropTypes.array
   };
 
@@ -82,6 +117,7 @@ class SubRoute extends PureComponent {
   }
 
   watchForUpdates() {
+    //toggle not configured yet
     if (true || this.props.watchForNew) {
       if (this.timer) {
         clearInterval(this.timer);

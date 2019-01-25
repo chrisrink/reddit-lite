@@ -9,19 +9,50 @@ import ViewPicker from "./ViewPicker";
 import "./header.css";
 
 const propTypes = {
+  /**
+   * Subreddit to display
+   */
   subreddit: PropTypes.shape({
     title: PropTypes.string,
     display_name: PropTypes.string
   }),
+  /**
+   * List of subs to display in SubPicker
+   */
   subList: PropTypes.array,
+  /**
+   * Are we searching in the SubPicker
+   */
   subredditLoading: PropTypes.bool,
+  /**
+   * Is a new subreddit picked
+   */
   onSubredditChange: PropTypes.func,
+  /**
+   * Callback for new searchText
+   */
   onSubredditSearch: PropTypes.func,
 
+  /**
+   * SearchText used to find subs
+   */
   subredditSearch: PropTypes.string,
+  /**
+   * Callback for when a new view is sellected
+   */
   onViewChange: PropTypes.func,
+
+  /**
+   * Current View to display
+   */
   view: PropTypes.string,
+  /**
+   * Show the new posts indicator
+   */
   showNew: PropTypes.bool,
+  /**
+   * Callback for when the new indicator is clicked.
+   */
   onShowNew: PropTypes.func
 };
 

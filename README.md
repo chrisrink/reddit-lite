@@ -1,4 +1,17 @@
 This Project is a clone of Reddit build to demonstrate its use of List APIs.
+This project demonstrates how infinite scroll can be combined with react-virtualized's masonry view. A list of features include:
+
+1. A Tiled View with infinite scrolling similar to pinterest.
+2. Page routing and redirects based off of subreddit and view
+3. Type ahead reddit subreddit searching
+4. Refresh notification if there are new posts that you have not been displayed yet
+5. Integration of responsive iconography using Font Awesome
+6. Integration with Semantic UI Framework
+7. Global state management with Redux. With Dev Tools support.
+
+Documentation - This project is fully documented with use of prop-types for each react component. Look at a component to find out a description of what it can do.
+
+Testing - This project uses jest and enzyme for unit testing and storybook for visual and interation testing.
 
 ## Available Scripts
 
@@ -6,7 +19,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.<br>
+Installs all dependencies and runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
@@ -34,24 +47,50 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `npm run deploy`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Builds and deploys the app to github hosted site (https://chrisrink.github.io/reddit-lite)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Known Issues
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. This app uses the public version of reddit's apis and the apis get rate limited after a point. When this happens the infinate scrolling and updating will stop working.
+2. The subreddit picker is not keyboard accessible
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## RoadMap
 
-## Learn More
+1. Better handle Post content and using "post_hint" to identify type of post.
+2. Add video support
+3. Test out using the preformated html (selftext_html) instead of formatting different. This is more applicable for other content like images and videos. Where I could use high resolution formats instead of the thumbnail.
+4. Post Page
+5. Authentication
+6. A webdriver integration testing
 
-Reddit APIs
+## Technologies Used
+
+#### Reddit APIs
 
 Official API (API https://www.reddit.com/dev/api/)
 
 JSON Data Structures (https://github.com/reddit-archive/reddit/wiki/JSON)
 
-## Disclaimer
+#### UI Frameworks
+
+Masonry View (https://bvaughn.github.io/react-virtualized/#/components/Masonry)
+
+Redux (https://redux.js.org/)
+
+React Router (https://reacttraining.com/react-router/)
+
+Semantic UI (https://react.semantic-ui.com)
+
+Font Awesome (https://fontawesome.com/how-to-use/on-the-web/using-with/react)
+
+Moment (http://momentjs.com/)
+
+#### Project Technologies
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+[Jest](https://jestjs.io/) unit tests with [Enzyme](https://airbnb.io/enzyme/) support.
+
+[Eslint](https://eslint.org/) and [Prettier](https://prettier.io/) - Once you go auto formatting, you never go back
