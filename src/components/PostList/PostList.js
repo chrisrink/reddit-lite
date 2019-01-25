@@ -81,7 +81,7 @@ export default class PostList extends React.PureComponent {
   _cellRenderer({ index, key, parent, style }) {
     const { list } = this.props;
 
-    const post = list[index % list.length];
+    const post = list[index];
 
     return (
       <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
@@ -119,7 +119,7 @@ export default class PostList extends React.PureComponent {
       <div className="postlist">
         <Masonry
           autoHeight={true}
-          cellCount={52}
+          cellCount={25}
           cellMeasurerCache={this._cache}
           cellPositioner={this._cellPositioner}
           cellRenderer={this._cellRenderer}
